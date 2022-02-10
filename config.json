@@ -1,0 +1,10 @@
+﻿{
+    "database": {
+        "host": "localhost",
+        "port": 8080,
+        "user": "root",
+        "password": "",
+        "database": "ideamart"
+    },
+    "secret": "0717ECF0FAF9402F9450D83FA4D3B7E5"
+}
