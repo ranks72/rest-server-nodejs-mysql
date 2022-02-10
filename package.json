@@ -1,11 +1,11 @@
 {
     "name": "node-mysql-registration-login-api",
     "version": "1.0.0",
-    "description": "Node.js + MySQL API for User Management, Authentication and Registration",
+    "description": "Node.js + MySQL",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cornflourblue/node-mysql-registration-login-api.git"
+        "url": "https://github.com/ranks72/rest-server-nodejs-mysql"
     },
     "scripts": {
         "start": "node ./server.js",
