@@ -10,7 +10,8 @@ router.post('/authenticate', authenticateSchema, authenticate);
 router.post('/register', registerSchema, register);
 router.get('/', authorize(), getAll);
 router.get('/current', authorize(), getCurrent);
-router.get('/:id', authorize(), getById);
+router.get('/:id', getById);
+router.get('/username/:username', getByUsername);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
@@ -63,6 +64,12 @@ function getById(req, res, next) {
     userService.getById(req.params.id)
         .then(user => res.json(user))
         .catch(next);
+}
+
+function getByUsername(req, res, next) {
+    userService.getByUsername(req.params.username)
+    .then(user => res.json(user))
+    .catch(next);
 }
 
 function updateSchema(req, res, next) {

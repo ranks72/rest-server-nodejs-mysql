@@ -6,6 +6,7 @@ const db = require('_helpers/db');
 module.exports = {
     authenticate,
     getAll,
+    getByUsername,
     getById,
     create,
     update,
@@ -32,6 +33,10 @@ async function getAll() {
 
 async function getById(id) {
     return await getUser(id);
+}
+
+async function getByUsername(username) {
+    return await getUsername(username);
 }
 
 async function create(params) {
@@ -80,6 +85,16 @@ async function _delete(id) {
 
 async function getUser(id) {
     const user = await db.User.findByPk(id);
+    if (!user) throw 'User not found';
+    return user;
+}
+
+async function getUsername(username){
+    const user = await db.User.findOne({
+        where: {
+            username: username, 
+        },
+    })
     if (!user) throw 'User not found';
     return user;
 }
