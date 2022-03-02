@@ -13,7 +13,7 @@ router.get('/current', authorize(), getCurrent);
 router.get('/:id', getById);
 router.get('/username/:username', getByUsername);
 router.put('/:username', updateSchema, update);
-router.delete('/:id', authorize(), _delete);
+router.delete('/:username', _delete);
 
 module.exports = router;
 
@@ -46,7 +46,7 @@ function registerSchema(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({ message: 'Registration successful' }))
+        .then(() => res.json({ message: 'Registrasi sukses' }))
         .catch(next);
 }
 
@@ -91,7 +91,7 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-    userService.delete(req.params.id)
-        .then(() => res.json({ message: 'User deleted successfully' }))
+    userService.delete(req.params.username)
+        .then(() => res.json({ message: 'User telah dihapus' }))
         .catch(next);
 }

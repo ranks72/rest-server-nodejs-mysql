@@ -76,8 +76,8 @@ async function update(username, params) {
     return omitHash(user.get());
 }
 
-async function _delete(id) {
-    const user = await getUser(id);
+async function _delete(username) {
+    const user = await getUsername(username);
     await user.destroy();
 }
 
