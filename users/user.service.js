@@ -55,13 +55,13 @@ async function create(params) {
     await db.User.create(params);
 }
 
-async function update(id, params) {
-    const user = await getUser(id);
+async function update(username, params) {
+    const user = await getUsername(username);
 
     // validate
     const usernameChanged = params.username && user.username !== params.username;
     if (usernameChanged && await db.User.findOne({ where: { username: params.username } })) {
-        throw 'Username "' + params.username + '" is already taken';
+        throw 'Username "' + params.username + '" Telah ada yang menggunakan';
     }
 
     // hash password if it was entered

@@ -12,7 +12,7 @@ router.get('/', authorize(), getAll);
 router.get('/current', authorize(), getCurrent);
 router.get('/:id', getById);
 router.get('/username/:username', getByUsername);
-router.put('/:id', authorize(), updateSchema, update);
+router.put('/:username', updateSchema, update);
 router.delete('/:id', authorize(), _delete);
 
 module.exports = router;
@@ -74,8 +74,10 @@ function getByUsername(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schema = Joi.object({
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
+        first_name: Joi.string().empty(''),
+        last_name: Joi.string().empty(''),
+        phone: Joi.string().min(12).empty(''),
+        email: Joi.string().empty(''),
         username: Joi.string().empty(''),
         password: Joi.string().min(6).empty('')
     });
@@ -83,7 +85,7 @@ function updateSchema(req, res, next) {
 }
 
 function update(req, res, next) {
-    userService.update(req.params.id, req.body)
+    userService.update(req.params.username, req.body)
         .then(user => res.json(user))
         .catch(next);
 }
